@@ -765,18 +765,37 @@ class Query {
 		// Because some database engines may throw errors if we leave orderings
 		// on the query when retrieving the total number of records, we'll drop
 		// all of the ordreings and put them back on the query.
-		list($orderings, $this->orderings) = array($this->orderings, null);
+		// list($orderings, $this->orderings) = array($this->orderings, null);
+		if(count($this->selects))
+		{
+			$first_select = $this->grammar->columnize(array($this->selects[0]));
+		}
+		else
+		{
+			$first_select = $this->grammar->columnize(array($columns[0]));
+		}
 
-		$total = $this->count(reset($columns));
+		$this->selects[0] = \DB::raw('SQL_CALC_FOUND_ROWS ' . $first_select);
+		
+		$page = \Input::get('page', 1);
 
-		$page = Paginator::page($total, $per_page);
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
+		
+		// $this->orderings = $orderings;
 
-		$this->orderings = $orderings;
-
-		// Now we're ready to get the actual pagination results from the table
-		// using the for_page and get methods. The "for_page" method provides
-		// a convenient way to set the paging limit and offset.
 		$results = $this->for_page($page, $per_page)->get($columns);
+		
+		$total = $this->connection->query('SELECT FOUND_ROWS() as num_rows');
+
+		$total = $total[0]->num_rows;
+
+        if($total > 0 && count($results) == 0)
+        {
+                 // quick little fix if the page number is higher than the real number of pages
+                 $page = 1;
+                // $results = $this->for_page($page, $per_page)->get($columns);
+                // something like this, the above line wont work though because I don't think you can run ->get() twice on a query
+        }
 
 		return Paginator::make($results, $total, $per_page);
 	}
