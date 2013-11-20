@@ -73,6 +73,7 @@ return array(
 
 	'irregular' => array(
 		'child' => 'children',
+		'criterion' => 'criteria',
 		'foot' => 'feet',
 		'goose' => 'geese',
 		'man' => 'men',
