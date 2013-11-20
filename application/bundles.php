@@ -34,7 +34,10 @@
 */
 
 return array(
-
-	'docs' => array('handles' => 'docs'),
-
+	'shift' => array(
+		'auto' => true
+	),
+	'authority' => array(
+		'auto' => true
+	)
 );
