@@ -739,17 +739,21 @@ class Query {
 		// We'll set the aggregate value so the grammar does not try to compile
 		// a SELECT clause on the query. If an aggregator is present, it's own
 		// grammar function will be used to build the SQL syntax.
-		$this->aggregate = compact('aggregator', 'columns');
-
-		$sql = $this->grammar->select($this);
-
+		if(! $this->groupings)
+		{
+			$this->aggregate = compact('aggregator', 'columns');
+			$sql = $this->grammar->select($this);
+		}
+		else
+		{
+			if (is_null($this->selects)) $this->select(array('*'));
+			$sql = "SELECT {$aggregator}({$this->grammar->columnize($columns)}) FROM ({$this->grammar->select($this)}) AS aggregate";
+		}
 		$result = $this->connection->only($sql, $this->bindings);
-
 		// Reset the aggregate so more queries can be performed using the same
 		// instance. This is helpful for getting aggregates and then getting
 		// actual results from the query such as during paging.
 		$this->aggregate = null;
-
 		return $result;
 	}
 
