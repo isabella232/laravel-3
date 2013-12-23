@@ -35,7 +35,7 @@ class Request
     const HEADER_CLIENT_PROTO = 'client_proto';
     const HEADER_CLIENT_PORT  = 'client_port';
 
-    protected static $trustProxy = false;
+    protected static $trustProxy = true;
 
     protected static $trustedProxies = array();
 
