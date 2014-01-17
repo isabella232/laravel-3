@@ -39,5 +39,8 @@ return array(
 	),
 	'authority' => array(
 		'auto' => true
+	),
+	'phpmailer' => array(
+		'auto' => true
 	)
 );

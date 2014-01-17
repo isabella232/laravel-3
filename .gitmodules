@@ -1,0 +1,3 @@
+[submodule "bundles/phpmailer"]
+	path = bundles/phpmailer
+	url = git@github.com:tectonic/phpmailer-laravel.git
