@@ -36,5 +36,8 @@
 return [
 	'shift'     => [ 'auto' => true ],
 	'authority' => [ 'auto' => true ],
-	'phpmailer' => [ 'auto' => true ]
+	'phpmailer' => [ 'auto' => true ],
+
+	// ChromePHP doesn't need to auto-start.
+	'chromephp'
 ];
