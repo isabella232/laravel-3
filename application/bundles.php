@@ -33,14 +33,8 @@
 |
 */
 
-return array(
-	'shift' => array(
-		'auto' => true
-	),
-	'authority' => array(
-		'auto' => true
-	),
-	'phpmailer' => array(
-		'auto' => true
-	)
-);
+return [
+	'shift'     => [ 'auto' => true ],
+	'authority' => [ 'auto' => true ],
+	'phpmailer' => [ 'auto' => true ]
+];
