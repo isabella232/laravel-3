@@ -79,17 +79,15 @@ class Error {
 	{
 		if (error_reporting() === 0) return;
 
+		if (in_array($code, Config::get('error.ignore')))
+		{
+			static::log($exception);
+		}
+
 		// For a PHP error, we'll create an ErrorException and then feed that
 		// exception to the exception method, which will create a simple view
 		// of the exception details for the developer.
-		$exception = new \ErrorException($error, $code, 0, $file, $line);
-
-		if (in_array($code, Config::get('error.ignore')))
-		{
-			return static::log($exception);
-		}
-
-		static::exception($exception);
+		throw new \ErrorException($error, $code, 0, $file, $line);
 	}
 
 	/**
