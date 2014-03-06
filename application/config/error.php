@@ -43,7 +43,7 @@ return array(
 	|
 	*/
 
-	'log' => false,
+	'log' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -63,7 +63,15 @@ return array(
 
 	'logger' => function($exception)
 	{
-		Log::exception($exception);
+		// Default to laravel preferred method if the error detail is set to true
+		if ( Request::env() != 'local' )
+		{
+			Log::exception( $exception );
+		}
+		else
+		{
+			\Shift\ExceptionHandler::handle( $exception );
+		}
 	},
 
 );

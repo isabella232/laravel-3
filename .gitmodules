@@ -1,0 +1,3 @@
+[submodule "bundles/shift"]
+	path = bundles/shift
+	url = git@github.com:tectonic/lv.shift.git
