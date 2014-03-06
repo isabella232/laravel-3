@@ -30,7 +30,7 @@ return array(
 	|
 	*/
 
-	'detail' => false,
+	'detail' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ return array(
 	|
 	*/
 
-	'log' => true,
+	'log' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -63,8 +63,7 @@ return array(
 
 	'logger' => function($exception)
 	{
-		// Default to laravel preferred method if the error detail is set to true
-		\Shift\ExceptionHandler::handle( $exception );
+		Log::exception( $exception );
 	},
 
 );
