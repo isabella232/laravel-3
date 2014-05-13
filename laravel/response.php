@@ -1,6 +1,5 @@
 <?php namespace Laravel;
 
-use Str;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\LaravelResponse as FoundationResponse;
 
