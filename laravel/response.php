@@ -1,5 +1,6 @@
 <?php namespace Laravel;
 
+use Str;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\LaravelResponse as FoundationResponse;
 
@@ -205,7 +206,7 @@ class Response {
 		// If the Content-Disposition header has already been set by the
 		// merge above, then do not override it with out generated one.
 		if (!isset($headers['Content-Disposition'])) {
-			$d = $response->disposition($name);
+			$d = $response->disposition(Str::ascii($name));
 			$response = $response->header('Content-Disposition', $d);
 		}
 
