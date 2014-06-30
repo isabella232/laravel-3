@@ -85,6 +85,8 @@ return array(
 	'qt'    => 'video/quicktime',
 	'mov'   => 'video/quicktime',
 	'avi'   => 'video/x-msvideo',
+	'mp4'   => 'video/mp4',
+	'wmv'   => 'video/x-ms-asf',
 	'movie' => 'video/x-sgi-movie',
 	'doc'   => 'application/msword',
 	'docx'  => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
