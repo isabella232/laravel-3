@@ -35,3 +35,9 @@ dwsync.xml
 intermediate
 publish
 .idea
+
+# Theming related files & folders
+storage/theming
+public/css/custom
+public/js/custom
+public/img/custom
