@@ -37,7 +37,7 @@ publish
 .idea
 
 # Theming related files & folders
-storage/theming
+storage/theming/*
 public/css/custom
 public/js/custom
 public/img/custom

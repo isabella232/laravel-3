@@ -36,7 +36,8 @@
 return [
 	'shift'     => [ 'auto' => true ],
 	'authority' => [ 'auto' => true ],
-	'snappy'    => [ 'auto' => true ],
+    'snappy'    => [ 'auto' => true ],
+	'resizer'   => [ 'auto' => true ],
 	'phpmailer' => [ 'auto' => true ],
 	'chromephp' => [ 'auto' => true ],
 ];
